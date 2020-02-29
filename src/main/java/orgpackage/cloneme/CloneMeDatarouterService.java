@@ -1,4 +1,4 @@
-package io.datarouter.cloneme;
+package orgpackage.cloneme;
 
 import io.datarouter.httpclient.client.DatarouterService;
 
