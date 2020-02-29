@@ -1,20 +1,16 @@
 ## CloneMe
 
-### Checkstyle
-The parent pom will require these checks pass:
-
-https://github.com/hotpads/datarouter/blob/master/datarouter-checkstyle/src/main/resources/datarouter-checkstyle.xml
+### Clone:
+```
+git clone git@github.com:hotpads/clone-me.git && cd clone-me
+```
 
 ### Build:
 ```
-cd ~/<project root>
-docker build . -t clone-me
+docker build -t clone-me .
 ```
 
 ### Run:
-
-#### dev-docker
-
 ```
 docker run \
 	-p 8080:8080 \
@@ -22,3 +18,6 @@ docker run \
 	-e JAVA_OPTS="-Ddatarouter.server.name=localhost -Ddatarouter.server.type=dev -Ddatarouter.internalConfigDirectory=dev-docker -Ddatarouter.server.privateIp=127.0.0.1 -Ddatarouter.server.publicIp=127.0.0.1" \
 	clone-me
 ```
+
+### View:
+- http://localhost:8080/clone-me
