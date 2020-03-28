@@ -1,10 +1,5 @@
 ## CloneMe
 
-### Clone:
-```
-git clone git@github.com:hotpads/clone-me.git && cd clone-me
-```
-
 ### Build:
 ```
 docker build -t clone-me .
