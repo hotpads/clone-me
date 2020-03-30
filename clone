@@ -37,6 +37,7 @@ echo pascal: $pascal
 
 cd /tmp
 docker rm -f $2
+docker rmi $2
 rm -rf $2
 
 ### init the clone
