@@ -56,6 +56,6 @@ docker run \
     -p 8080:8080 \
     -p 8443:8443 \
     -e JAVA_OPTS="-Ddatarouter.server.name=localhost -Ddatarouter.server.type=dev -Ddatarouter.internalConfigDirectory=dev-docker -Ddatarouter.server.privateIp=127.0.0.1 -Ddatarouter.server.publicIp=127.0.0.1" \
-    hello-world
+    $2
 xdg-open http://localhost:8080/$2
 #
