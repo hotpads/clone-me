@@ -1,13 +1,11 @@
 # $1 com.example
 # $2 hello-world
 
-docker rm -f $2
-mkdir ~/tmp
 cd ~/tmp
+docker rm -f $2
 rm -rf clone-me
 rm -rf $2
 
-git clone git@github.com:hotpads/clone-me.git
 cp -R clone-me $2
 cd $2
 rm -rf .git

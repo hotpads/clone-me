@@ -1,18 +1,14 @@
 ## CloneMe
 
-### Build:
-```
-docker build -t clone-me .
-```
+A template to be cloned into an application.
 
-### Run:
-```
-docker run \
-	-p 8080:8080 \
-	-p 8443:8443 \
-	-e JAVA_OPTS="-Ddatarouter.server.name=localhost -Ddatarouter.server.type=dev -Ddatarouter.internalConfigDirectory=dev-docker -Ddatarouter.server.privateIp=127.0.0.1 -Ddatarouter.server.publicIp=127.0.0.1" \
-	clone-me
-```
+### clone.sh
 
-### View:
-- http://localhost:8080/clone-me
+To create an app named `hello-world` with parent java package `com.example`:
+
+```
+cd ~/tmp
+git clone git@github.com:hotpads/clone-me.git
+cd clone-me
+clone com.example hello-world
+```
