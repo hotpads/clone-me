@@ -35,7 +35,7 @@ echo pascal: $pascal
 
 ### clear existing files
 
-cd ~/tmp
+cd /tmp
 docker rm -f $2
 rm -rf $2
 
@@ -49,19 +49,19 @@ rm -rf .git
 
 packageDirectory=$(echo $1 | sed "s/\./\//g")
 
-cd ~/tmp/$2/src/main/java
+cd /tmp/$2/src/main/java
 mkdir -p $packageDirectory
 cp -R orgpackage/* $packageDirectory
 rm -rf orgpackage
 
-cd ~/tmp/$2/src/test/java
+cd /tmp/$2/src/test/java
 mkdir -p $packageDirectory
 cp -R orgpackage/* $packageDirectory
 rm -rf orgpackage
 
 ### rename files
 
-cd ~/tmp
+cd /tmp
 
 echo 'moving'
 find ./$2 | sed -e "p;s/clone-me/$kebabLower/g" | xargs -n2 mv

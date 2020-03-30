@@ -7,7 +7,7 @@ A template to be cloned into an application.
 To create an app named `hello-world` with parent java package `com.example`:
 
 ```
-cd ~/tmp
+cd /tmp
 git clone git@github.com:hotpads/clone-me.git
 cd clone-me
 git checkout mattc/clone-script
