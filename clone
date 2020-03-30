@@ -1,16 +1,52 @@
 # $1 com.example
 # $2 hello-world
 
+### prepare name variations
+
+join() {
+    # $1 is return variable name
+    # $2 is sep
+    # $3... are the elements to join
+    local retname=$1 sep=$2 ret=$3
+    shift 3 || shift $(($#))
+    printf -v "$retname" "%s" "$ret${@/#/$sep}"
+}
+
+IFS='-' lowerTokens=( $1 )
+IFS=' '
+upperTokens=( "${lowerTokens[@]^}" )
+
+join "kebabLower" "-" "${lowerTokens[@]}"
+join "kebabUpper" "-" "${upperTokens[@]}"
+join "lower" "" "${lowerTokens[@]}"
+join "camelTail" "" "${upperTokens[@]:1}"
+camel=${lowerTokens[0]}$camelTail
+join "pascal" "" "${upperTokens[@]}"
+
+echo lowerTokens: "${lowerTokens[@]}"
+echo "${#lowerTokens[@]}"
+echo upperTokens: "${upperTokens[@]}"
+echo "${#upperTokens[@]}"
+echo kebabLower: $kebabLower
+echo kebabUpper: $kebabUpper
+echo lower: $lower
+echo camel: $camel
+echo pascal: $pascal
+
+### clear existing files
+
 cd ~/tmp
 docker rm -f $2
-rm -rf clone-me
 rm -rf $2
+
+### init the clone
 
 cp -R clone-me $2
 cd $2
 rm -rf .git
 
-#directories
+### move files to new directories 
+
 packageDirectory=$(echo $1 | sed "s/\./\//g")
 
 cd ~/tmp/$2/src/main/java
@@ -23,32 +59,36 @@ mkdir -p $packageDirectory
 cp -R orgpackage/* $packageDirectory
 rm -rf orgpackage
 
-cd ~/tmp/$2
+### rename files
+
+cd ~/tmp
 
 echo 'moving'
-find . | sed -e "p;s/cloneme/helloworld/g" | xargs -n2 mv
-find . | sed -e "p;s/clone-me/$2/g" | xargs -n2 mv
+find ./$2 | sed -e "p;s/clone-me/$kebabLower/g" | xargs -n2 mv
+find ./$2 | sed -e "p;s/Clone-Me/$kebabUpper/g" | xargs -n2 mv
+find ./$2 | sed -e "p;s/cloneme/$lower/g" | xargs -n2 mv
+find ./$2 | sed -e "p;s/CloneMe/$pascal/g" | xargs -n2 mv
+find ./$2 | sed -e "p;s/cloneMe/$camel/g" | xargs -n2 mv
 echo 'moved'
 
-#files
-find . | sed -e "p;s/CloneMe/HelloWorld/" | xargs -n2 mv
+### replace packages in code
 
-#code packages
-find . -type f -exec sed -i'' -e "s/orgpackage/$1/g" {} +
+find ./$2 -type f -exec sed -i'' -e "s/orgpackage/$1/g" {} +
 
-#code
-find . -type f -exec sed -i'' -e "s/clone-me/$2/g" {} +
-find . -type f -exec sed -i'' -e "s/Clone-Me/Hello-World/g" {} +
-find . -type f -exec sed -i'' -e "s/clone-Me/hello-World/g" {} +
-find . -type f -exec sed -i'' -e "s/Clone-me/Hello-world/g" {} +
-find . -type f -exec sed -i'' -e "s/cloneme/helloworld/g" {} +
-find . -type f -exec sed -i'' -e "s/CloneMe/HelloWorld/g" {} +
-find . -type f -exec sed -i'' -e "s/cloneMe/helloWorld/g" {} +
-find . -type f -exec sed -i'' -e "s/Cloneme/Helloworld/g" {} +
+#### replace names in code
+find ./$2 -type f -exec sed -i'' -e "s/clone-me/$kebabLower/g" {} +
+find ./$2 -type f -exec sed -i'' -e "s/Clone-Me/$kebabUpper/g" {} +
+find ./$2 -type f -exec sed -i'' -e "s/cloneme/$lower/g" {} +
+find ./$2 -type f -exec sed -i'' -e "s/CloneMe/$pascal/g" {} +
+find ./$2 -type f -exec sed -i'' -e "s/cloneMe/$camel/g" {} +
 
+### init git repo
+
+cd $2
 git init
 
-#from readme
+### docker build and run
+
 docker build -t $2 .
 docker run \
     -d \
