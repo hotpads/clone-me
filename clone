@@ -66,10 +66,10 @@ cd /tmp/$2
 
 echo 'moving'
 find . -name "*" | grep clone-me | xargs rename s/clone-me/$kebabLower/
-find . -name "*" | grep clone-me | xargs rename s/Clone-Me/$kebabUpper/
-find . -name "*" | grep clone-me | xargs rename s/cloneme/$lower/
-find . -name "*" | grep clone-me | xargs rename s/CloneMe/$pascal/
-find . -name "*" | grep clone-me | xargs rename s/cloneMe/$camel/
+find . -name "*" | grep Clone-Me | xargs rename s/Clone-Me/$kebabUpper/
+find . -name "*" | grep cloneme | xargs rename s/cloneme/$lower/
+find . -name "*" | grep CloneMe | xargs rename s/CloneMe/$pascal/
+find . -name "*" | grep cloneMe | xargs rename s/cloneMe/$camel/
 echo 'moved'
 
 ### replace packages in code
