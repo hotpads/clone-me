@@ -29,7 +29,7 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 		}
 	}
 
-	public static class MontevideoClientIds{
+	public static class CloneMeClientIds{
 		public static final ClientId MYSQL = new ClientId("mysql", true, false);
 	}
 
@@ -37,11 +37,11 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 			CloneMeDatarouterService.CLONE_ME,
 			new CloneMeServerType(),
 			new CloneMeDatarouterProperties(new CloneMeServerType()),
-			MontevideoClientIds.MYSQL,
+			CloneMeClientIds.MYSQL,
 			new Log4jServletContextListener())
 			.addWebPlugin(new DatarouterMysqlPluginBuilder().build())
-			.addWebPlugin(new DatarouterSecretPluginBuilder(MontevideoClientIds.MYSQL).build())
-			.addWebPlugin(new DatarouterTaskTrackerPluginBuilder(MontevideoClientIds.MYSQL).build())
+			.addWebPlugin(new DatarouterSecretPluginBuilder(CloneMeClientIds.MYSQL).build())
+			.addWebPlugin(new DatarouterTaskTrackerPluginBuilder(CloneMeClientIds.MYSQL).build())
 			.setAuthenticationConfig(CloneMeAuthenticationConfig.class)
 			.setHttpsConfiguration(InsecureHttpsConfiguration.class)
 			.setServerTypeDetector(NoOpServerTypeDetector.class)
