@@ -74,14 +74,14 @@ echo 'moved'
 
 ### replace packages in code
 
-find ./$2 -type f -exec sed -i'' -e "s/orgpackage/$1/g" {} +
+find . -type f -exec sed -i'' -e "s/orgpackage/$1/g" {} +
 
 #### replace names in code
-find ./$2 -type f -exec sed -i'' -e "s/clone-me/$kebabLower/g" {} +
-find ./$2 -type f -exec sed -i'' -e "s/Clone-Me/$kebabUpper/g" {} +
-find ./$2 -type f -exec sed -i'' -e "s/cloneme/$lower/g" {} +
-find ./$2 -type f -exec sed -i'' -e "s/CloneMe/$pascal/g" {} +
-find ./$2 -type f -exec sed -i'' -e "s/cloneMe/$camel/g" {} +
+find . -type f -exec sed -i'' -e "s/clone-me/$kebabLower/g" {} +
+find . -type f -exec sed -i'' -e "s/Clone-Me/$kebabUpper/g" {} +
+find . -type f -exec sed -i'' -e "s/cloneme/$lower/g" {} +
+find . -type f -exec sed -i'' -e "s/CloneMe/$pascal/g" {} +
+find . -type f -exec sed -i'' -e "s/cloneMe/$camel/g" {} +
 
 ### init git repo
 
