@@ -44,6 +44,7 @@ rm -rf $2
 
 cp -R clone-me $2
 rm -rf $2/.git
+rm -rf $2/clone
 
 ### move files to new directories 
 
@@ -61,14 +62,14 @@ rm -rf orgpackage
 
 ### rename files
 
-cd /tmp
+cd /tmp/$2
 
 echo 'moving'
-find ./$2 | sed -e "p;s/clone-me/$kebabLower/g" | xargs -n2 mv
-find ./$2 | sed -e "p;s/Clone-Me/$kebabUpper/g" | xargs -n2 mv
-find ./$2 | sed -e "p;s/cloneme/$lower/g" | xargs -n2 mv
-find ./$2 | sed -e "p;s/CloneMe/$pascal/g" | xargs -n2 mv
-find ./$2 | sed -e "p;s/cloneMe/$camel/g" | xargs -n2 mv
+find . | sed -e "p;s/clone-me/$kebabLower/g" | xargs -n2 mv
+find . | sed -e "p;s/Clone-Me/$kebabUpper/g" | xargs -n2 mv
+find . | sed -e "p;s/cloneme/$lower/g" | xargs -n2 mv
+find . | sed -e "p;s/CloneMe/$pascal/g" | xargs -n2 mv
+find . | sed -e "p;s/cloneMe/$camel/g" | xargs -n2 mv
 echo 'moved'
 
 ### replace packages in code
