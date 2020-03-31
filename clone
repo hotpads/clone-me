@@ -15,6 +15,7 @@ join() {
 IFS='-' lowerTokens=( $2 )
 IFS=' '
 upperTokens=( "${lowerTokens[@]^}" )
+allUpperTokens=( "${lowerTokens[@]^^}" )
 
 join "kebabLower" "-" "${lowerTokens[@]}"
 join "kebabUpper" "-" "${upperTokens[@]}"
@@ -22,6 +23,7 @@ join "lower" "" "${lowerTokens[@]}"
 join "camelTail" "" "${upperTokens[@]:1}"
 camel=${lowerTokens[0]}$camelTail
 join "pascal" "" "${upperTokens[@]}"
+join "snakeAllUpper" "_" "${allUpperTokens[@]}"
 
 echo lowerTokens: "${lowerTokens[@]}"
 echo "${#lowerTokens[@]}"
@@ -32,6 +34,7 @@ echo kebabUpper: $kebabUpper
 echo lower: $lower
 echo camel: $camel
 echo pascal: $pascal
+echo snakeAllUpper: $snakeAllUpper
 
 ### clear existing files
 
@@ -71,6 +74,7 @@ find . -name "*" | grep Clone-Me | xargs rename s/Clone-Me/$kebabUpper/
 find . -name "*" | grep cloneme | xargs rename s/cloneme/$lower/
 find . -name "*" | grep CloneMe | xargs rename s/CloneMe/$pascal/
 find . -name "*" | grep cloneMe | xargs rename s/cloneMe/$camel/
+find . -name "*" | grep CLONE_ME | xargs rename s/CLONE_ME/$snakeAllUpper/
 echo 'moved'
 
 ### replace packages in code
@@ -83,6 +87,7 @@ find . -type f -exec sed -i'' -e "s/Clone-Me/$kebabUpper/g" {} +
 find . -type f -exec sed -i'' -e "s/cloneme/$lower/g" {} +
 find . -type f -exec sed -i'' -e "s/CloneMe/$pascal/g" {} +
 find . -type f -exec sed -i'' -e "s/cloneMe/$camel/g" {} +
+find . -type f -exec sed -i'' -e "s/CLONE_ME/$snakeAllUpper/g" {} +
 
 ### init git repo
 
