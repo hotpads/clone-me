@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    
+
 	<groupId>orgpackage</groupId>
 	<artifactId>clone-me</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-    
+
     <properties>
         <datarouter-version>0.0.24</datarouter-version>
         <log4j-version>2.13.0</log4j-version>
     </properties>
-    
+
 	<build>
 		<finalName>clone-me</finalName>
 		<plugins>
