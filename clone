@@ -12,7 +12,7 @@ join() {
     printf -v "$retname" "%s" "$ret${@/#/$sep}"
 }
 
-IFS='-' lowerTokens=( $1 )
+IFS='-' lowerTokens=( $2 )
 IFS=' '
 upperTokens=( "${lowerTokens[@]^}" )
 
