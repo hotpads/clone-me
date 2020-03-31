@@ -11,7 +11,9 @@ cd /tmp
 rm -rf clone-me
 rm clone
 git clone git@github.com:hotpads/clone-me.git
+cd clone-me
 git checkout mattc/clone-script
+cd /tmp
 cp clone-me/clone .
 clone com.example hello-world
 ```
