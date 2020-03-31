@@ -10,12 +10,10 @@ install "rename":
 sudo apt-get install rename
 ```
 
-### Download the template
+### Download the template to /tmp
 
 ```
-cd /tmp
-rm -rf clone-me
-rm clone
+cd /tmp && rm -rf clone-me && rm clone
 git clone git@github.com:hotpads/clone-me.git
 cp clone-me/clone .
 ```
