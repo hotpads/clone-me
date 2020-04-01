@@ -3,7 +3,10 @@
 ### Run with Docker
 
 ```
+cd /tmp/clone-me
+
 docker build -t clone-me .
+
 docker run \
     -d \
     --name clone-me \
