@@ -77,3 +77,9 @@ find . -type f -exec sed -i'' -e "s/cloneme/$lower/g" {} +
 find . -type f -exec sed -i'' -e "s/CloneMe/$pascal/g" {} +
 find . -type f -exec sed -i'' -e "s/cloneMe/$camel/g" {} +
 find . -type f -exec sed -i'' -e "s/CLONE_ME/$snakeAllUpper/g" {} +
+
+### git init
+
+cd /tmp/$2
+git init
+
