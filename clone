@@ -35,9 +35,10 @@ rm -rf $2
 ### init the clone
 
 cp -R clone-me $2
-rm -rf $2/.git
-rm $2/clone
-rm $2/README.md
+cd $2
+rm -rf .git
+rm clone
+rm README.md
 mv APP_README.md README.md
 
 ### move files to new directories 
