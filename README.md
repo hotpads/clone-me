@@ -14,7 +14,7 @@ sudo apt-get install rename
 
 ```
 cd /tmp && rm -rf clone-me && rm clone
-git clone git@github.com:hotpads/clone-me.git
+git clone https://github.com/hotpads/clone-me.git
 cp clone-me/clone .
 ```
 
