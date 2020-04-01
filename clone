@@ -83,3 +83,7 @@ find . -type f -exec sed -i'' -e "s/CLONE_ME/$snakeAllUpper/g" {} +
 cd /tmp/$2
 git init
 
+### next steps
+
+echo "View /tmp/$2/README.md for next steps"
+xdg-open /tmp/$2/README.md
