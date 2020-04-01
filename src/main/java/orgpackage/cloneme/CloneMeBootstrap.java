@@ -41,7 +41,7 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 		public static final ClientId MYSQL = new ClientId("mysql", true, false);
 
 		@Singleton
-		public class CloneMeClientOptionsFactory implements ClientOptionsFactory{
+		public static class CloneMeClientOptionsFactory implements ClientOptionsFactory{
 
 			private static final String MYSQL_SCHEMA = "cloneme";
 
