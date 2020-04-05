@@ -12,9 +12,13 @@ sudo apt-get install rename
 
 #### Run MySQL
 
-Code defaults to port 3307, password "changeit"
+If not already running MySQL on port 3306:
 ```
-docker run -p 3307:3306 --name mysql -e MYSQL_ROOT_PASSWORD=changeit -d mysql:5.7
+docker run -d \
+	--name mysql \
+	-e MYSQL_ALLOW_EMPTY_PASSWORD=true \
+	-p 3306:3306 \
+	mysql:5.7
 ```
 
 ### Download the template to /tmp
