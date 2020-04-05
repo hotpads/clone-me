@@ -18,7 +18,7 @@ import io.datarouter.storage.servertype.ServerTypeDetector.NoOpServerTypeDetecto
 import io.datarouter.tasktracker.config.DatarouterTaskTrackerPlugin.DatarouterTaskTrackerPluginBuilder;
 import io.datarouter.web.config.DatarouterBootstrap;
 import io.datarouter.web.config.DatarouterWebListener;
-import io.datarouter.web.config.DatarouterWebWebappBuilder;
+import io.datarouter.web.config.DatarouterWebWebappConfigBuilder.DatarouterWebWebappBuilderImpl;
 import io.datarouter.web.config.DatarouterWebappConfig;
 import io.datarouter.web.filter.https.InsecureHttpsConfiguration;
 import orgpackage.cloneme.CloneMeBootstrap.CloneMeClientIds.CloneMeClientOptionsFactory;
@@ -65,7 +65,7 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 		
 	}
 	
-	public static final DatarouterWebappConfig CONFIG = new DatarouterWebWebappBuilder(
+	public static final DatarouterWebappConfig CONFIG = new DatarouterWebWebappBuilderImpl(
 			CloneMeDatarouterService.CLONE_ME,
 			new CloneMeServerType(),
 			new CloneMeDatarouterProperties(new CloneMeServerType()),
@@ -77,6 +77,7 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 			.setAuthenticationConfig(CloneMeAuthenticationConfig.class)
 			.setClientOptionsFactory(CloneMeClientOptionsFactory.class)
 			.setHttpsConfiguration(InsecureHttpsConfiguration.class)
+			.setSchemaUpdateOptionsFactory(CloneMeSchemaUpdateOptionsFactory.class)
 			.setServerTypeDetector(NoOpServerTypeDetector.class)
 			.build();
 
