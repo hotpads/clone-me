@@ -4,10 +4,17 @@ A template to be cloned into an application.
 
 ### Prerequisites
 
-install "rename":
+#### Install "rename":
 
 ```
 sudo apt-get install rename
+```
+
+#### Run MySQL
+
+Code defaults to port 3307, password "changeit"
+```
+docker run -p 3307:3306 --name mysql -e MYSQL_ROOT_PASSWORD=changeit -d mysql:5.7
 ```
 
 ### Download the template to /tmp

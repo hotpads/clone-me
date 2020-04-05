@@ -57,7 +57,9 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 
 			private Properties buildDevDockerOptions(){
 				return new MysqlClientOptionsBuilder(MYSQL)
-						.withUrl("percona.docker:3306/" + MYSQL_SCHEMA)
+						.withUrl("localhost:3307/" + MYSQL_SCHEMA)
+						.withUser("root")
+						.withPassword("changeit")
 						.build();
 			}
 
