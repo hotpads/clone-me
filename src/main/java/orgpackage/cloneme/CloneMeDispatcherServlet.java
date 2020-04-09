@@ -5,16 +5,16 @@ import javax.inject.Singleton;
 
 import io.datarouter.inject.DatarouterInjector;
 import io.datarouter.web.config.BaseDatarouterWebDispatcherServlet;
-import io.datarouter.web.config.RootRouteSetsSupplier;
+import io.datarouter.web.config.RouteSetRegistry;
 
 @Singleton
 @SuppressWarnings("serial")
 public class CloneMeDispatcherServlet extends BaseDatarouterWebDispatcherServlet{
 
 	@Inject
-	public CloneMeDispatcherServlet(DatarouterInjector injector, RootRouteSetsSupplier routeSets){
+	public CloneMeDispatcherServlet(DatarouterInjector injector, RouteSetRegistry routeSetRegistry){
 		super(injector);
-		routeSets.get().forEach(this::addRouteSet);
+		routeSetRegistry.get().forEach(this::addRouteSet);
 	}
 
 }
