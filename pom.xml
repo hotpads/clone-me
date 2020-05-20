@@ -6,36 +6,36 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-    <properties>
-        <datarouter-version>0.0.31</datarouter-version>
-        <log4j-version>2.13.0</log4j-version>
-    </properties>
+	<properties>
+		<datarouter-version>0.0.31</datarouter-version>
+		<log4j-version>2.13.0</log4j-version>
+	</properties>
 
 	<build>
 		<finalName>clone-me</finalName>
 		<plugins>
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>12</source>
-                    <target>12</target>
-                </configuration>
-            </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>12</source>
+					<target>12</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
 				<version>2.2.6</version>
 				<executions>
 					<execution>
-			            <phase>none</phase>
-			        </execution>
+						<phase>none</phase>
+					</execution>
 				</executions>
 				<configuration>
 					<generateGitPropertiesFile>true</generateGitPropertiesFile>
 					<useNativeGit>true</useNativeGit>
 					<skip>true</skip>
-                </configuration>
+			</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -78,5 +78,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
 </project>
