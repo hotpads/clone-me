@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<datarouter-version>0.0.35</datarouter-version>
+		<datarouter-version>0.0.36</datarouter-version>
 		<log4j-version>2.13.3</log4j-version>
 	</properties>
 
