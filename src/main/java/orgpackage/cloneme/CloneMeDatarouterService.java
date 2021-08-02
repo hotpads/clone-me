@@ -16,7 +16,7 @@ public enum CloneMeDatarouterService implements DatarouterService{
 	}
 
 	@Override
-	public String getName(){
+	public String getServiceName(){
 		return name;
 	}
 

@@ -1,5 +1,6 @@
 package orgpackage.cloneme;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.inject.Singleton;
@@ -9,7 +10,6 @@ import org.apache.logging.log4j.web.Log4jServletContextListener;
 
 import io.datarouter.client.mysql.config.DatarouterMysqlPlugin.DatarouterMysqlPluginBuilder;
 import io.datarouter.client.mysql.factory.MysqlClientOptionsBuilder;
-import io.datarouter.secret.config.DatarouterSecretPlugin.DatarouterSecretPluginBuilder;
 import io.datarouter.storage.client.ClientId;
 import io.datarouter.storage.client.ClientOptionsFactory;
 import io.datarouter.storage.servertype.BaseServerTypes;
@@ -27,18 +27,18 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 
 	@Singleton
 	public static class CloneMeServerType extends BaseServerTypes{
-		
+
 		private static final ServerType CLONE_ME = makeProduction("clone-me");
 
 		public CloneMeServerType(){
 			super(CLONE_ME);
 		}
-		
+
 	}
 
 	public static class CloneMeClientIds{
-		
-		public static final ClientId MYSQL = new ClientId("mysql", true, false);
+
+		public static final ClientId MYSQL = ClientId.writer("mysql", false);
 
 		@Singleton
 		public static class CloneMeClientOptionsFactory implements ClientOptionsFactory{
@@ -63,17 +63,16 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 			}
 
 		}
-		
+
 	}
-	
+
 	public static final DatarouterWebappConfig CONFIG = new DatarouterWebWebappBuilderImpl(
 			CloneMeDatarouterService.CLONE_ME,
 			new CloneMeServerType(),
 			new CloneMeDatarouterProperties(new CloneMeServerType()),
-			CloneMeClientIds.MYSQL,
+			List.of(CloneMeClientIds.MYSQL),
 			new Log4jServletContextListener())
 			.addWebPlugin(new DatarouterMysqlPluginBuilder().build())
-			.addWebPlugin(new DatarouterSecretPluginBuilder(CloneMeClientIds.MYSQL).build())
 			.addWebPlugin(new DatarouterTaskTrackerPluginBuilder(CloneMeClientIds.MYSQL).build())
 			.setAuthenticationConfig(CloneMeAuthenticationConfig.class)
 			.setClientOptionsFactory(CloneMeClientOptionsFactory.class)
@@ -84,11 +83,11 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 
 	@WebListener
 	public static class CloneMeWebListener extends DatarouterWebListener{
-		
+
 		public CloneMeWebListener(){
 			super(CONFIG);
 		}
-		
+
 	}
 
 }

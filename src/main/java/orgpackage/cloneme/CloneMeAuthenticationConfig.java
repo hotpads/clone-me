@@ -1,6 +1,5 @@
 package orgpackage.cloneme;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,7 +21,7 @@ public class CloneMeAuthenticationConfig extends BaseDatarouterAuthenticationCon
 
 	@Override
 	public List<DatarouterAuthenticator> getAuthenticators(HttpServletRequest request){
-		return Arrays.asList(
+		return List.of(
 				datarouterSessionAuthenticator,
 				datarouterAnonymousNonPersistentAuthenticator);
 	}

@@ -1,7 +1,6 @@
 package orgpackage.cloneme;
 
 import io.datarouter.testng.TestNgModuleFactory;
-import orgpackage.cloneme.CloneMeBootstrap;
 
 public class CloneMeTestBootstrap{
 
