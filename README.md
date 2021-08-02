@@ -7,7 +7,10 @@ A template to be cloned into an application.
 #### Install "rename":
 
 ```
+# ubuntu
 sudo apt-get install rename
+# mac
+brew install rename
 ```
 
 #### Run MySQL
