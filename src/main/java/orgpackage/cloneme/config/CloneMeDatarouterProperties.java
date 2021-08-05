@@ -1,4 +1,4 @@
-package orgpackage.cloneme;
+package orgpackage.cloneme.config;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

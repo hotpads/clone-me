@@ -1,4 +1,4 @@
-package orgpackage.cloneme;
+package orgpackage.cloneme.config;
 
 import io.datarouter.testng.TestNgModuleFactory;
 

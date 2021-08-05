@@ -1,4 +1,4 @@
-package orgpackage.cloneme;
+package orgpackage.cloneme.config;
 
 import java.util.List;
 import java.util.Properties;
@@ -21,7 +21,7 @@ import io.datarouter.web.config.DatarouterWebListener;
 import io.datarouter.web.config.DatarouterWebWebappConfigBuilder.DatarouterWebWebappBuilderImpl;
 import io.datarouter.web.config.DatarouterWebappConfig;
 import io.datarouter.web.filter.https.InsecureHttpsConfiguration;
-import orgpackage.cloneme.CloneMeBootstrap.CloneMeClientIds.CloneMeClientOptionsFactory;
+import orgpackage.cloneme.config.CloneMeBootstrap.CloneMeClientIds.CloneMeClientOptionsFactory;
 
 public class CloneMeBootstrap implements DatarouterBootstrap{
 
