@@ -30,7 +30,6 @@ public enum CloneMeDatarouterService implements DatarouterService{
 		return publicDomain;
 	}
 
-	@Override
 	public String getContextName(){
 		return name;
 	}
