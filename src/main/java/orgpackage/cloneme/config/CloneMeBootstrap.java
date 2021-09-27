@@ -67,7 +67,9 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 	}
 
 	public static final DatarouterWebappConfig CONFIG = new DatarouterWebWebappBuilderImpl(
-			CloneMeDatarouterService.CLONE_ME,
+			CloneMeDatarouterService.CLONE_ME.getServiceName(),
+			CloneMeDatarouterService.CLONE_ME.getPublicDomain(),
+			CloneMeDatarouterService.CLONE_ME.getPrivateDomain(),
 			CloneMeDatarouterService.CLONE_ME.getContextName(),
 			new CloneMeServerType(),
 			List.of(CloneMeClientIds.MYSQL),

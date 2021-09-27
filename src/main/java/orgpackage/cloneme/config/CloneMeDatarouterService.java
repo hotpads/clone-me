@@ -1,8 +1,6 @@
 package orgpackage.cloneme.config;
 
-import io.datarouter.httpclient.client.DatarouterService;
-
-public enum CloneMeDatarouterService implements DatarouterService{
+public enum CloneMeDatarouterService{
 	CLONE_ME("clone-me", "", "");
 
 	private final String name;
@@ -15,17 +13,14 @@ public enum CloneMeDatarouterService implements DatarouterService{
 		this.publicDomain = publicDomain;
 	}
 
-	@Override
 	public String getServiceName(){
 		return name;
 	}
 
-	@Override
 	public String getPrivateDomain(){
 		return privateDomain;
 	}
 
-	@Override
 	public String getPublicDomain(){
 		return publicDomain;
 	}
