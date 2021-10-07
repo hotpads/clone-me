@@ -10,6 +10,7 @@ import org.apache.logging.log4j.web.Log4jServletContextListener;
 
 import io.datarouter.client.mysql.config.DatarouterMysqlPlugin.DatarouterMysqlPluginBuilder;
 import io.datarouter.client.mysql.factory.MysqlClientOptionsBuilder;
+import io.datarouter.email.config.DatarouterEmailPlugin.DatarouterEmailPluginBuilder;
 import io.datarouter.storage.client.ClientId;
 import io.datarouter.storage.client.ClientOptionsFactory;
 import io.datarouter.storage.servertype.BaseServerTypes;
@@ -76,6 +77,7 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 			new Log4jServletContextListener())
 			.addWebPlugin(new DatarouterMysqlPluginBuilder().build())
 			.addWebPlugin(new DatarouterTaskTrackerPluginBuilder(CloneMeClientIds.MYSQL).build())
+			.addStoragePlugin(new DatarouterEmailPluginBuilder().build())
 			.setAuthenticationConfig(CloneMeAuthenticationConfig.class)
 			.setClientOptionsFactory(CloneMeClientOptionsFactory.class)
 			.setHttpsConfiguration(InsecureHttpsConfiguration.class)
