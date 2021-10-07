@@ -37,7 +37,8 @@ join "snakeAllUpper" "_" "${allUpperTokens[@]}"
 
 ### clear existing files
 
-cd /tmp
+workdir=$(pwd)
+
 docker rm -f $2
 docker rmi $2
 rm -rf $2
@@ -55,19 +56,19 @@ mv APP_README.md README.md
 
 packageDirectory=$(echo $1 | sed "s/\./\//g")
 
-cd /tmp/$2/src/main/java
+cd $workdir/$2/src/main/java
 mkdir -p $packageDirectory
 cp -R orgpackage/* $packageDirectory
 rm -rf orgpackage
 
-cd /tmp/$2/src/test/java
+cd $workdir/$2/src/test/java
 mkdir -p $packageDirectory
 cp -R orgpackage/* $packageDirectory
 rm -rf orgpackage
 
 ### rename files
 
-cd /tmp/$2
+cd $workdir/$2
 find . -name "*" | xargs rename s/clone-me/$kebabLower/
 find . -name "*" | xargs rename s/Clone-Me/$kebabUpper/
 find . -name "*" | xargs rename s/cloneme/$lower/
@@ -90,10 +91,10 @@ find . -type f -exec sed -i'' -e "s/CLONE_ME/$snakeAllUpper/g" {} +
 
 ### git init
 
-cd /tmp/$2
+cd $workdir/$2
 git init
 
 ### next steps
 
-echo "View /tmp/$2/README.md for next steps"
-${start} /tmp/$2/README.md
+echo "View $workdir/$2/README.md for next steps"
+${start} $workdir/$2/README.md
