@@ -3,7 +3,6 @@ package orgpackage.cloneme.config;
 import java.util.List;
 import java.util.Properties;
 
-import javax.inject.Singleton;
 import javax.servlet.annotation.WebListener;
 
 import org.apache.logging.log4j.web.Log4jServletContextListener;
@@ -13,6 +12,7 @@ import io.datarouter.client.mysql.factory.MysqlClientOptionsBuilder;
 import io.datarouter.email.config.DatarouterEmailPlugin.DatarouterEmailPluginBuilder;
 import io.datarouter.storage.client.ClientId;
 import io.datarouter.storage.client.ClientOptionsFactory;
+import io.datarouter.storage.client.RequiredClientIds.SimpleRequiredClientIds;
 import io.datarouter.storage.servertype.BaseServerTypes;
 import io.datarouter.storage.servertype.ServerType;
 import io.datarouter.storage.servertype.ServerTypeDetector.NoOpServerTypeDetector;
@@ -22,6 +22,7 @@ import io.datarouter.web.config.DatarouterWebListener;
 import io.datarouter.web.config.DatarouterWebWebappConfigBuilder.DatarouterWebWebappBuilderImpl;
 import io.datarouter.web.config.DatarouterWebappConfig;
 import io.datarouter.web.filter.https.InsecureHttpsConfiguration;
+import jakarta.inject.Singleton;
 import orgpackage.cloneme.config.CloneMeBootstrap.CloneMeClientIds.CloneMeClientOptionsFactory;
 
 public class CloneMeBootstrap implements DatarouterBootstrap{
@@ -29,7 +30,7 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 	@Singleton
 	public static class CloneMeServerType extends BaseServerTypes{
 
-		private static final ServerType CLONE_ME = makeProduction("clone-me");
+		private static final ServerType CLONE_ME = makeProduction("clone-me", true);
 
 		public CloneMeServerType(){
 			super(CLONE_ME);
@@ -67,6 +68,14 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 
 	}
 
+	public static class CloneMeRequiredClientIds extends SimpleRequiredClientIds{
+
+		public CloneMeRequiredClientIds(){
+			super(List.of(CloneMeClientIds.MYSQL));
+		}
+
+	}
+
 	public static final DatarouterWebappConfig CONFIG = new DatarouterWebWebappBuilderImpl(
 			CloneMeDatarouterService.CLONE_ME.getServiceName(),
 			CloneMeDatarouterService.CLONE_ME.getPublicDomain(),
@@ -74,9 +83,11 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 			CloneMeDatarouterService.CLONE_ME.getContextName(),
 			new CloneMeServerType(),
 			List.of(CloneMeClientIds.MYSQL),
+			new CloneMeRequiredClientIds(),
 			new Log4jServletContextListener())
-			.addWebPlugin(new DatarouterMysqlPluginBuilder().build())
-			.addWebPlugin(new DatarouterTaskTrackerPluginBuilder(CloneMeClientIds.MYSQL).build())
+			.setServiceDescription("")
+			.addPlugin(new DatarouterMysqlPluginBuilder().build())
+			.addPlugin(new DatarouterTaskTrackerPluginBuilder(CloneMeClientIds.MYSQL).build())
 			.addStoragePlugin(new DatarouterEmailPluginBuilder().build())
 			.setAuthenticationConfig(CloneMeAuthenticationConfig.class)
 			.setClientOptionsFactory(CloneMeClientOptionsFactory.class)

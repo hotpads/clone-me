@@ -2,10 +2,9 @@ package orgpackage.cloneme.config;
 
 import java.util.Properties;
 
-import javax.inject.Singleton;
-
 import io.datarouter.storage.config.schema.SchemaUpdateOptionsBuilder;
 import io.datarouter.storage.config.schema.SchemaUpdateOptionsFactory;
+import jakarta.inject.Singleton;
 
 @Singleton
 public class CloneMeSchemaUpdateOptionsFactory implements SchemaUpdateOptionsFactory{

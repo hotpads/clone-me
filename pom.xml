@@ -8,7 +8,10 @@
 
 	<properties>
 		<datarouter-version>0.0.121</datarouter-version>
-		<log4j-version>2.14.1</log4j-version>
+		<log4j-version>2.17.1</log4j-version>
+		<maven-compiler-verison>3.11.0</maven-compiler-verison>
+		<java-version>19</java-version>
+		<git-commit-id-maven-plugin-version>6.0.0</git-commit-id-maven-plugin-version>
 	</properties>
 
 	<build>
@@ -17,26 +20,37 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven-compiler-verison}</version>
 				<configuration>
-					<source>13</source>
-					<target>13</target>
+					<source>${java-version>}</source>
+					<target>${java-version>}</target>
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>pl.project13.maven</groupId>
-				<artifactId>git-commit-id-plugin</artifactId>
-				<version>2.2.6</version>
+				<groupId>io.github.git-commit-id</groupId>
+				<artifactId>git-commit-id-maven-plugin</artifactId>
+				<version>${git-commit-id-maven-plugin-version}</version>
 				<executions>
 					<execution>
-						<phase>none</phase>
+						<goals>
+							<goal>revision</goal>
+						</goals>
 					</execution>
 				</executions>
 				<configuration>
 					<generateGitPropertiesFile>true</generateGitPropertiesFile>
 					<useNativeGit>true</useNativeGit>
-					<skip>true</skip>
-			</configuration>
+					<abbrevLength>10</abbrevLength>
+					<includeOnlyProperties>
+						<includeOnlyProperties>git.branch</includeOnlyProperties>
+						<includeOnlyProperties>git.commit.id.abbrev</includeOnlyProperties>
+						<includeOnlyProperties>git.commit.id</includeOnlyProperties>
+						<includeOnlyProperties>git.commit.id.describe-short</includeOnlyProperties>
+						<includeOnlyProperties>git.commit.time</includeOnlyProperties>
+						<includeOnlyProperties>git.commit.user.name</includeOnlyProperties>
+						<includeOnlyProperties>git.build.time</includeOnlyProperties>
+					</includeOnlyProperties>
+				</configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
