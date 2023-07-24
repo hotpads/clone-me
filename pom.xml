@@ -11,7 +11,6 @@
 		<log4j-version>2.17.1</log4j-version>
 		<maven-compiler-verison>3.11.0</maven-compiler-verison>
 		<java-version>19</java-version>
-		<git-commit-id-maven-plugin-version>6.0.0</git-commit-id-maven-plugin-version>
 	</properties>
 
 	<build>
@@ -24,32 +23,6 @@
 				<configuration>
 					<source>${java-version>}</source>
 					<target>${java-version>}</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>io.github.git-commit-id</groupId>
-				<artifactId>git-commit-id-maven-plugin</artifactId>
-				<version>${git-commit-id-maven-plugin-version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>revision</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<generateGitPropertiesFile>true</generateGitPropertiesFile>
-					<useNativeGit>true</useNativeGit>
-					<abbrevLength>10</abbrevLength>
-					<includeOnlyProperties>
-						<includeOnlyProperties>git.branch</includeOnlyProperties>
-						<includeOnlyProperties>git.commit.id.abbrev</includeOnlyProperties>
-						<includeOnlyProperties>git.commit.id</includeOnlyProperties>
-						<includeOnlyProperties>git.commit.id.describe-short</includeOnlyProperties>
-						<includeOnlyProperties>git.commit.time</includeOnlyProperties>
-						<includeOnlyProperties>git.commit.user.name</includeOnlyProperties>
-						<includeOnlyProperties>git.build.time</includeOnlyProperties>
-					</includeOnlyProperties>
 				</configuration>
 			</plugin>
 		</plugins>
