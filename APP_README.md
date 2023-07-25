@@ -5,6 +5,8 @@
 ```
 cd /tmp/clone-me
 
+docker stop clone-me && docker rm clone-me
+
 docker build -t clone-me .
 
 docker run \
