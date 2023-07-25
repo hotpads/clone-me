@@ -5,3 +5,4 @@ target
 test-output
 *.iml
 src/main/webapp/META-INF
+/bin
