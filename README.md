@@ -49,3 +49,6 @@ Run "clone" with your package and app-name:
 ```
 clone com.example hello-world
 ```
+
+## CI/CD
+[![Java CI with Maven](https://github.com/hotpads/clone-me/actions/workflows/maven.yml/badge.svg)](https://github.com/hotpads/clone-me/actions/workflows/maven.yml)
