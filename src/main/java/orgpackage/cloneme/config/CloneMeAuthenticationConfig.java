@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import io.datarouter.web.user.authenticate.authenticator.DatarouterAuthenticator;
-import io.datarouter.web.user.authenticate.authenticator.impl.DatarouterAnonymousNonPersistentAuthenticator;
+import io.datarouter.auth.authenticate.authenticator.DatarouterAuthenticator;
+import io.datarouter.auth.authenticate.authenticator.impl.DatarouterAnonymousNonPersistentAuthenticator;
 import io.datarouter.web.user.authenticate.authenticator.impl.DatarouterSessionAuthenticator;
 import io.datarouter.web.user.authenticate.config.BaseDatarouterAuthenticationConfig;
 import jakarta.inject.Inject;
