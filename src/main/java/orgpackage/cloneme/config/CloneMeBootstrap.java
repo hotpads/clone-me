@@ -23,7 +23,6 @@ import io.datarouter.web.config.DatarouterWebWebappConfigBuilder.DatarouterWebWe
 import io.datarouter.web.config.DatarouterWebappConfig;
 import io.datarouter.web.filter.https.InsecureHttpsConfiguration;
 import jakarta.inject.Singleton;
-import orgpackage.cloneme.config.CloneMeBootstrap.CloneMeClientIds.CloneMeClientOptionsFactory;
 
 public class CloneMeBootstrap implements DatarouterBootstrap{
 
@@ -49,12 +48,10 @@ public class CloneMeBootstrap implements DatarouterBootstrap{
 
 			@Override
 			public Properties getInternalConfigDirectoryTypeOptions(String internalConfigDirectory){
-				switch(internalConfigDirectory){
-				case "dev-docker":
-					return buildDevDockerOptions();
-				default:
-					return new Properties();
-				}
+				return switch(internalConfigDirectory){
+				case "dev-docker" -> buildDevDockerOptions();
+				default -> new Properties();
+				};
 			}
 
 			private Properties buildDevDockerOptions(){
