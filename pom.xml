@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<datarouter-version>0.0.126</datarouter-version>
+		<datarouter-version>0.0.127</datarouter-version>
 		<log4j-version>2.23.1</log4j-version>
 		<maven-compiler-verison>3.12.1</maven-compiler-verison>
 		<java-version>21</java-version>
